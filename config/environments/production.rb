@@ -13,14 +13,16 @@ Rails.application.configure do
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
-  config.action_mailer.default_url_options = {:host => 'handledapp@gmail.com'}
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-  :address => "127.0.0.1",
-  :port    => 25,
-  :domain  => 'gmail.com'
-}
 
+     config.action_mailer.delivery_method = :smtp
+      config.action_mailer.smtp_settings = {
+        address:              'smtpout.secureserver.net',
+        port:                 3535,
+        domain:               'handledapp.com',
+        user_name:            'atty@handledapp.com',
+        password:             'hAndled1980',
+        authentication:       'plain',
+        enable_starttls_auto: true  }
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
