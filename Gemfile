@@ -30,6 +30,8 @@ gem 'devise'
 gem 'rails_admin'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'dotenv'
+gem 'mandrill-api' 
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
