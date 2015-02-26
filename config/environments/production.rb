@@ -14,15 +14,24 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-     config.action_mailer.delivery_method = :smtp
-      config.action_mailer.smtp_settings = {
-        address:              'smtpout.secureserver.net',
-        port:                 3535,
-        domain:               'handledapp.com',
-        user_name:            'atty@handledapp.com',
-        password:             'hAndled1980',
-        authentication:       'plain',
-        enable_starttls_auto: true  }
+
+        config.action_mailer.default_url_options = { :host => 'handledapp2-dev.herokuapp.com' }
+        Rails.application.routes.default_url_options[:host] = 'handledapp2-dev.herokuapp.com'
+          config.action_mailer.delivery_method = :smtp
+          config.action_mailer.perform_deliveries = true
+          config.action_mailer.raise_delivery_errors = false
+          config.action_mailer.default :charset => "utf-8"
+          config.action_mailer.smtp_settings = {
+              :port => '587',
+              :address => 'smtp.mandrillapp.com',
+              :user_name => ENV['MANDRILL_USERNAME'],
+              :password => ENV['MANDRILL_APIKEY'],
+              :domain => 'heroku.com',
+              :authentication => :plain
+            }
+        ActionMailer::Base.delivery_method = :smtp
+        config.action_controller.include_all_helpers = true
+        ActionMailer::Base.default :from => "Handled <atty@Handledapp.com>"
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
